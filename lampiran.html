@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Lampiran | UKK DKV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #1E90FF 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #111;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animated clouds */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100px;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 300px;
+      height: 80px;
+      top: 10%;
+      left: -150px;
+      animation: floatCloud1 20s linear infinite;
+    }
+
+    body::after {
+      width: 250px;
+      height: 70px;
+      top: 60%;
+      left: -150px;
+      animation: floatCloud2 25s linear infinite;
+    }
+
+    @keyframes floatCloud1 {
+      0% { left: -150px; }
+      100% { left: 110%; }
+    }
+
+    @keyframes floatCloud2 {
+      0% { left: -150px; }
+      100% { left: 110%; }
+    }
+
+    /* HERO */
+    .hero {
+      background: #1A5490;
+      color: #fff;
+      padding: 90px 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 16.5px;
+      line-height: 1.8;
+      color: #f0f8ff;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 80px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .title {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .line {
+      width: 90px;
+      height: 5px;
+      background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.6));
+      margin-bottom: 40px;
+      border-radius: 3px;
+    }
+
+    /* DOCUMENT GRID */
+    .document-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .document-item {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .document-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .doc-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .document-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #2874A6;
+    }
+
+    .document-item p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .doc-type {
+      display: inline-block;
+      background: linear-gradient(135deg, #5DADE2, #3498DB);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* GALLERY GRID */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 3px solid #3498DB;
+    }
+
+    .gallery-caption {
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* CERTIFICATE SECTION */
+    .certificate-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 40px auto 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .certificate-box img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      border: 4px solid #3498DB;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .certificate-box h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #2874A6;
+    }
+
+    .certificate-box p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* DOWNLOAD BUTTON */
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #5DADE2, #3498DB);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .download-btn:hover {
+      background: linear-gradient(135deg, #3498DB, #2874A6);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* NAV */
+    .nav-bottom {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 80px auto 0;
+      padding: 0 20px;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-bottom a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-bottom a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 30px 10px;
+      text-align: center;
+      font-size: 13px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 38px; }
+      .hero p { font-size: 15.5px; }
+      .title { font-size: 28px; }
+    }
+
+    @media (max-width: 900px) {
+      .document-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero {
+        padding: 70px 20px;
+      }
+
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 15px; }
+
+      .section {
+        padding: 60px 15px;
+      }
+
+      .title { font-size: 26px; }
+
+      .certificate-box {
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 30px; }
+
+      .document-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-bottom {
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .nav-bottom a {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .section {
+        padding: 50px 10px;
+      }
+
+      .title {
+        font-size: 24px;
+      }
+
+      .document-item {
+        padding: 25px;
+      }
+
+      .doc-icon {
+        font-size: 40px;
+      }
+
+      .document-item h3 {
+        font-size: 17px;
+      }
+
+      .document-item p {
+        font-size: 13px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .gallery-item img {
+        height: 180px;
+      }
+
+      .certificate-box {
+        padding: 25px;
+      }
+
+      .certificate-box h3 {
+        font-size: 20px;
+      }
+
+      .certificate-box p {
+        font-size: 14px;
+      }
+
+      .nav-bottom {
+        flex-direction: column;
+        align-items: center;
+        margin: 60px auto 0;
+      }
+
+      .nav-bottom a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+
+      .footer {
+        font-size: 12px;
+        padding: 25px 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 22px; }
+      .hero p { font-size: 13px; }
+      .title { font-size: 20px; }
+      .document-item { padding: 20px; }
+      .certificate-box { padding: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Lampiran</h1>
+      <p>
+        Dokumentasi pendukung, file proyek, dan materi tambahan yang menjadi
+        bagian dari Uji Kompetensi Keahlian Desain Komunikasi Visual.
+      </p>
+    </div>
+  </section>
+
+  <!-- DOKUMEN -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Dokumen Pendukung</h2>
+      <div class="line"></div>
+
+      <div class="document-grid">
+        <a href="#" class="document-item">
+          <div class="doc-icon">📄</div>
+          <h3>Proposal Proyek</h3>
+          <p>Dokumen perencanaan lengkap proyek UKK</p>
+          <span class="doc-type">PDF</span>
+        </a>
+
+        <a href="#" class="document-item">
+          <div class="doc-icon">📊</div>
+          <h3>Laporan Akhir</h3>
+          <p>Laporan hasil pelaksanaan UKK</p>
+          <span class="doc-type">PDF</span>
+        </a>
+
+        <a href="#" class="document-item">
+          <div class="doc-icon">🎨</div>
+          <h3>File Desain</h3>
+          <p>Source file Adobe Illustrator & Photoshop</p>
+          <span class="doc-type">ZIP</span>
+        </a>
+
+        <a href="#" class="document-item">
+          <div class="doc-icon">🎬</div>
+          <h3>File Video</h3>
+          <p>Video proyek dalam format HD</p>
+          <span class="doc-type">MP4</span>
+        </a>
+
+        <a href="#" class="document-item">
+          <div class="doc-icon">📸</div>
+          <h3>Dokumentasi</h3>
+          <p>Foto proses pengerjaan proyek</p>
+          <span class="doc-type">ZIP</span>
+        </a>
+
+        <a href="#" class="document-item">
+          <div class="doc-icon">📋</div>
+          <h3>Daftar Pustaka</h3>
+          <p>Referensi dan sumber yang digunakan</p>
+          <span class="doc-type">PDF</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Galeri Proyek</h2>
+      <div class="line"></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 1">
+          <div class="gallery-caption">Proses Sketching</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 2">
+          <div class="gallery-caption">Digital Design</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 3">
+          <div class="gallery-caption">Color Grading</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 4">
+          <div class="gallery-caption">Final Output</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 5">
+          <div class="gallery-caption">Typography Work</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 6">
+          <div class="gallery-caption">Layout Design</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 7">
+          <div class="gallery-caption">Video Editing</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300" alt="Dokumentasi 8">
+          <div class="gallery-caption">Presentation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERTIFIKAT -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Sertifikat</h2>
+      <div class="line"></div>
+
+      <div class="certificate-box">
+        <img src="https://via.placeholder.com/800x600" alt="Sertifikat UKK">
+        <h3>Sertifikat Kompetensi</h3>
+        <p>
+          Sertifikat yang diterbitkan sebagai bukti kelulusan Uji Kompetensi
+          Keahlian Desain Komunikasi Visual Tahun Pelajaran 2024/2025.
+        </p>
+        <a href="#" class="download-btn">📥 Download Sertifikat</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="nav-bottom">
+    <a href="proyek.html">← Proyek</a>
+    <a href="index.html">Home</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Website Untuk Uji Kompetensi Keahlian Desain Komunikasi Visual
+  </div>
+
+</body>
+</html>
