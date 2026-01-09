@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyek | UKK DKV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #1E90FF 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #111;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animated clouds */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100px;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 300px;
+      height: 80px;
+      top: 10%;
+      left: -150px;
+      animation: floatCloud1 20s linear infinite;
+    }
+
+    body::after {
+      width: 250px;
+      height: 70px;
+      top: 60%;
+      left: -150px;
+      animation: floatCloud2 25s linear infinite;
+    }
+
+    @keyframes floatCloud1 {
+      0% { left: -150px; }
+      100% { left: 110%; }
+    }
+
+    @keyframes floatCloud2 {
+      0% { left: -150px; }
+      100% { left: 110%; }
+    }
+
+    /* HERO */
+    .hero {
+      background: #1A5490;
+      color: #fff;
+      padding: 100px 20px 80px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      margin-bottom: 14px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #f0f8ff;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 80px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .title {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .line {
+      width: 90px;
+      height: 5px;
+      background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.6));
+      margin-bottom: 40px;
+      border-radius: 3px;
+    }
+
+    /* PROJECT GRID */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .project {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .project img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 3px solid #3498DB;
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #2874A6;
+    }
+
+    .project-content p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* DETAIL SECTION */
+    .detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .detail-text {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .detail-text h3 {
+      font-size: 26px;
+      margin-bottom: 14px;
+      color: #2874A6;
+    }
+
+    .detail-text p {
+      font-size: 15.5px;
+      line-height: 1.9;
+      margin-bottom: 16px;
+      color: #333;
+    }
+
+    .detail-box {
+      background: #1A5490;
+      color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .detail-row span {
+      color: #87CEEB;
+      font-weight: bold;
+    }
+
+    /* PROCESS */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .step {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      margin: auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5DADE2, #3498DB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .step p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* NAV */
+    .nav-bottom {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 80px auto 0;
+      padding: 0 20px;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-bottom a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-bottom a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 30px 10px;
+      text-align: center;
+      font-size: 13px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 40px; }
+      .hero p { font-size: 16px; }
+      .title { font-size: 28px; }
+      .detail-text { padding: 35px; }
+    }
+
+    @media (max-width: 900px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      .detail {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 60px 15px;
+      }
+
+      .title {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 30px; }
+      
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .detail-text {
+        padding: 30px;
+      }
+
+      .detail-text h3 {
+        font-size: 24px;
+      }
+
+      .detail-text p {
+        font-size: 14.5px;
+      }
+
+      .detail-box {
+        padding: 25px;
+      }
+
+      .nav-bottom {
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .nav-bottom a {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 15px 50px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .section {
+        padding: 50px 10px;
+      }
+
+      .title {
+        font-size: 24px;
+      }
+
+      .project img {
+        height: 180px;
+      }
+
+      .project-content {
+        padding: 20px;
+      }
+
+      .project-content h3 {
+        font-size: 17px;
+      }
+
+      .project-content p {
+        font-size: 13.5px;
+      }
+
+      .detail-text {
+        padding: 25px;
+      }
+
+      .detail-text h3 {
+        font-size: 22px;
+      }
+
+      .detail-text p {
+        font-size: 14px;
+      }
+
+      .detail-box {
+        padding: 20px;
+      }
+
+      .detail-row {
+        grid-template-columns: 100px 1fr;
+        font-size: 13px;
+      }
+
+      .step {
+        padding: 25px 15px;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+      }
+
+      .step p {
+        font-size: 13.5px;
+      }
+
+      .nav-bottom {
+        flex-direction: column;
+        align-items: center;
+        margin: 60px auto 0;
+      }
+
+      .nav-bottom a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+
+      .footer {
+        font-size: 12px;
+        padding: 25px 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 22px; }
+      .hero p { font-size: 13px; }
+      .title { font-size: 20px; }
+      .detail-text { padding: 20px; }
+      .detail-box { padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Proyek</h1>
+      <p>
+        Bagian ini menampilkan hasil karya yang dibuat sebagai bentuk penerapan
+        konsep, proses, dan eksekusi dalam Uji Kompetensi Keahlian
+        Desain Komunikasi Visual.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECT LIST -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Hasil Karya</h2>
+      <div class="line"></div>
+
+      <div class="project-grid">
+        <div class="project">
+          <img src="https://via.placeholder.com/600x400" alt="">
+          <div class="project-content">
+            <h3>Desain Poster</h3>
+            <p>Poster promosi dengan fokus pada komposisi visual dan tipografi.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="https://via.placeholder.com/600x400" alt="">
+          <div class="project-content">
+            <h3>Video Promosi</h3>
+            <p>Video pendek yang dirancang untuk media digital dan sosial.</p>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="https://via.placeholder.com/600x400" alt="">
+          <div class="project-content">
+            <h3>Desain Logo</h3>
+            <p>Identitas visual yang menekankan kesederhanaan dan makna.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL PROJECT -->
+  <section class="section">
+    <div class="container detail">
+
+      <div class="detail-text">
+        <h3>Detail Proyek Utama</h3>
+        <p>
+          Proyek utama pada UKK ini dirancang untuk menguji kemampuan peserta
+          dalam memahami brief, menyusun konsep visual, serta mengeksekusi
+          desain secara profesional dan komunikatif.
+        </p>
+        <p>
+          Setiap keputusan desain dibuat berdasarkan kebutuhan audiens,
+          tujuan komunikasi, serta prinsip desain yang relevan.
+        </p>
+      </div>
+
+      <div class="detail-box">
+        <div class="detail-row">
+          <span>Jenis</span>
+          <div>Media Visual & Digital</div>
+        </div>
+        <div class="detail-row">
+          <span>Tools</span>
+          <div>Adobe Illustrator, Photoshop, Premiere Pro</div>
+        </div>
+        <div class="detail-row">
+          <span>Output</span>
+          <div>Poster, Video, Desain Grafis</div>
+        </div>
+        <div class="detail-row">
+          <span>Durasi</span>
+          <div>± 6 Jam Pengerjaan</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Alur Pengerjaan</h2>
+      <div class="line"></div>
+
+      <div class="process">
+        <div class="step">
+          <div class="step-number">01</div>
+          <p>Analisis brief dan kebutuhan proyek</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <p>Penyusunan konsep dan ide visual</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <p>Produksi desain dan media</p>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <p>Evaluasi dan penyempurnaan hasil</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="nav-bottom">
+    <a href="pendahuluan.html">← Pendahuluan</a>
+    <a href="index.html">Home</a>
+    <a href="lampiran.html">Lampiran →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Website Untuk Uji Kompetensi Keahlian Desain Komunikasi Visual
+  </div>
+
+</body>
+</html>

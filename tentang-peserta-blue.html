@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tentang Peserta | UKK DKV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #1E90FF 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #111;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animated clouds */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100px;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 300px;
+      height: 80px;
+      top: 10%;
+      left: -150px;
+      animation: floatCloud1 20s linear infinite;
+    }
+
+    body::after {
+      width: 250px;
+      height: 70px;
+      top: 60%;
+      left: -150px;
+      animation: floatCloud2 25s linear infinite;
+    }
+
+    @keyframes floatCloud1 {
+      0% { left: -150px; }
+      100% { left: 110%; }
+    }
+
+    @keyframes floatCloud2 {
+      0% { left: -150px; }
+      100% { left: 110%; }
+    }
+
+    /* HEADER */
+    .header {
+      padding: 40px 20px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header .line {
+      width: 160px;
+      height: 6px;
+      background: #3498DB;
+      margin: 14px auto 0;
+      border-radius: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* CONTENT */
+    .content {
+      background: linear-gradient(135deg, #5DADE2 0%, #3498DB 100%);
+      padding: 50px 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-box {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      align-items: start;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* FOTO */
+    .photo img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 4px solid #4A90E2;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* DATA */
+    .data {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 180px 20px 1fr;
+      margin-bottom: 12px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #2874A6;
+    }
+
+    /* NAV BAWAH */
+    .nav-bottom {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 40px auto 0;
+      font-size: 14px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-bottom a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-bottom a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 30px 10px;
+      text-align: center;
+      font-size: 13px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .header h1 { font-size: 32px; }
+      .profile-box { padding: 30px; }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 { font-size: 28px; }
+      .header { padding: 30px 15px 15px; }
+      
+      .content { padding: 40px 15px; }
+      
+      .profile-box {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 25px;
+      }
+      
+      .photo img { max-width: 400px; margin: 0 auto; display: block; }
+      
+      .row {
+        grid-template-columns: 120px 12px 1fr;
+        font-size: 14px;
+      }
+      
+      .nav-bottom {
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      .nav-bottom a {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header h1 { font-size: 24px; }
+      
+      .profile-box {
+        padding: 20px;
+        gap: 25px;
+      }
+      
+      .photo img { max-width: 100%; }
+      
+      .row {
+        grid-template-columns: 100px 10px 1fr;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      
+      .nav-bottom {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-bottom a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      
+      .footer { font-size: 12px; padding: 25px 10px; }
+    }
+
+    @media (max-width: 400px) {
+      .header h1 { font-size: 20px; }
+      .profile-box { padding: 15px; }
+      .row { grid-template-columns: 90px 8px 1fr; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div class="header">
+    <h1>TENTANG PESERTA</h1>
+    <div class="line"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="profile-box">
+      <!-- FOTO -->
+      <div class="photo">
+        <img src="https://via.placeholder.com/600x800" alt="Foto Peserta">
+      </div>
+
+      <!-- DATA PESERTA -->
+      <div class="data">
+        <div class="row">
+          <div class="label">Nama</div>
+          <div>:</div>
+          <div>Ilham Putranaya, A.Md</div>
+        </div>
+        <div class="row">
+          <div class="label">NISN</div>
+          <div>:</div>
+          <div>000050000</div>
+        </div>
+        <div class="row">
+          <div class="label">Tempat, Tgl Lahir</div>
+          <div>:</div>
+          <div>Bumi, 00/13/xxxx</div>
+        </div>
+        <div class="row">
+          <div class="label">Keahlian</div>
+          <div>:</div>
+          <div>
+            Pembuatan Video,<br>
+            Editing Video,<br>
+            Desain Vector
+          </div>
+        </div>
+        <div class="row">
+          <div class="label">Alamat</div>
+          <div>:</div>
+          <div>
+            Di atas Bumi Di bawah Langit<br>
+            RT 000 / RW 000
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-bottom">
+      <a href="pendahuluan.html">← Pendahuluan</a>
+      <a href="index.html">Home</a>
+      <a href="proyek.html">Proyek →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Website Untuk Uji Kompetensi Keahlian Desain Komunikasi Visual
+  </div>
+</body>
+</html>

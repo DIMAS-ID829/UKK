@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Proyek | UKK DKV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #1E90FF 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #111;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animated clouds */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  z-index: 0;
+}
+
+body::before {
+  width: 300px;
+  height: 80px;
+  top: 10%;
+  left: -150px;
+  animation: floatCloud1 20s linear infinite;
+}
+
+body::after {
+  width: 250px;
+  height: 70px;
+  top: 60%;
+  left: -150px;
+  animation: floatCloud2 25s linear infinite;
+}
+
+@keyframes floatCloud1 {
+  0% { left: -150px; }
+  100% { left: 110%; }
+}
+
+@keyframes floatCloud2 {
+  0% { left: -150px; }
+  100% { left: 110%; }
+}
+
+/* HERO */
+.hero {
+  background: #1A5490;
+  color: #fff;
+  padding: 90px 20px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  max-width: 700px;
+  font-size: 16.5px;
+  line-height: 1.8;
+  color: #f0f8ff;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.line {
+  width: 90px;
+  height: 5px;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.6));
+  margin-bottom: 40px;
+  border-radius: 3px;
+}
+
+/* PROJECT GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.project {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 3px solid #3498DB;
+}
+
+.project-content {
+  padding: 22px;
+}
+
+.project-content h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #2874A6;
+}
+
+.project-content p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #fff;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  animation: zoom .25s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes zoom {
+  from { transform: scale(.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 3px solid #3498DB;
+}
+
+.modal-content {
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #2874A6;
+}
+
+.modal-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.modal-info {
+  background: rgba(93, 173, 226, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #3498DB;
+}
+
+.modal-info div {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.modal-info strong {
+  color: #2874A6;
+}
+
+/* CLOSE BUTTON */
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  color: #2874A6;
+  background: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.close:hover {
+  background: #3498DB;
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* NAV */
+.nav-bottom {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 0 20px;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-bottom a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bottom a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+.footer {
+  padding: 30px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 38px; }
+  .hero p { font-size: 15.5px; }
+  .title { font-size: 28px; }
+}
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-body img {
+    border-right: none;
+    border-bottom: 3px solid #3498DB;
+    max-height: 300px;
+  }
+
+  .hero {
+    padding: 70px 20px;
+  }
+
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 15px; }
+
+  .section {
+    padding: 60px 15px;
+  }
+
+  .title { font-size: 26px; }
+
+  .modal-content {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 30px; }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .nav-bottom {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .nav-bottom a {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 50px 10px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .project img {
+    height: 180px;
+  }
+
+  .project-content {
+    padding: 18px;
+  }
+
+  .project-content h3 {
+    font-size: 17px;
+  }
+
+  .project-content p {
+    font-size: 13.5px;
+  }
+
+  .modal-box {
+    width: 95%;
+  }
+
+  .modal-body img {
+    max-height: 250px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-content h3 {
+    font-size: 20px;
+  }
+
+  .modal-content p {
+    font-size: 14px;
+  }
+
+  .modal-info {
+    padding: 12px;
+  }
+
+  .modal-info div {
+    font-size: 13px;
+  }
+
+  .close {
+    width: 35px;
+    height: 35px;
+    font-size: 26px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .nav-bottom {
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto 0;
+  }
+
+  .nav-bottom a {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 25px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 22px; }
+  .hero p { font-size: 13px; }
+  .title { font-size: 20px; }
+  .modal-content { padding: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Proyek</h1>
+    <p>
+      Setiap proyek dirancang melalui proses konseptual, produksi, dan evaluasi
+      sebagai bagian dari Uji Kompetensi Keahlian Desain Komunikasi Visual.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECT LIST -->
+<section class="section">
+  <div class="container">
+    <h2 class="title">Hasil Karya</h2>
+    <div class="line"></div>
+
+    <div class="project-grid">
+      <div class="project" onclick="openModal(0)">
+        <img src="https://via.placeholder.com/600x400">
+        <div class="project-content">
+          <h3>Desain Poster</h3>
+          <p>Poster promosi berbasis tipografi.</p>
+        </div>
+      </div>
+
+      <div class="project" onclick="openModal(1)">
+        <img src="https://via.placeholder.com/600x400">
+        <div class="project-content">
+          <h3>Video Promosi</h3>
+          <p>Media video untuk platform digital.</p>
+        </div>
+      </div>
+
+      <div class="project" onclick="openModal(2)">
+        <img src="https://via.placeholder.com/600x400">
+        <div class="project-content">
+          <h3>Desain Logo</h3>
+          <p>Identitas visual minimalis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <span class="close" onclick="closeModal()">×</span>
+    <div class="modal-body">
+      <img id="modalImage">
+      <div class="modal-content">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <div class="modal-info">
+          <div><strong>Tools:</strong> <span id="modalTools"></span></div>
+          <div><strong>Tujuan:</strong> <span id="modalGoal"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-bottom">
+  <a href="pendahuluan.html">← Pendahuluan</a>
+  <a href="index.html">Home</a>
+  <a href="lampiran.html">Lampiran →</a>
+</div>
+
+<div class="footer">
+  Website Untuk Uji Kompetensi Keahlian Desain Komunikasi Visual
+</div>
+
+<script>
+const projects = [
+  {
+    title: "Desain Poster",
+    desc: "Poster dirancang untuk menyampaikan pesan secara visual melalui tipografi dan warna.",
+    tools: "Adobe Illustrator",
+    goal: "Komunikasi visual efektif",
+    img: "https://via.placeholder.com/800x600"
+  },
+  {
+    title: "Video Promosi",
+    desc: "Video pendek dengan visual dinamis untuk kebutuhan promosi digital.",
+    tools: "Adobe Premiere Pro",
+    goal: "Meningkatkan daya tarik konten",
+    img: "https://via.placeholder.com/800x600"
+  },
+  {
+    title: "Desain Logo",
+    desc: "Logo dengan pendekatan sederhana agar mudah dikenali dan fleksibel.",
+    tools: "Adobe Illustrator",
+    goal: "Membangun identitas visual",
+    img: "https://via.placeholder.com/800x600"
+  }
+];
+
+function openModal(index) {
+  const data = projects[index];
+  modalTitle.innerText = data.title;
+  modalDesc.innerText = data.desc;
+  modalTools.innerText = data.tools;
+  modalGoal.innerText = data.goal;
+  modalImage.src = data.img;
+  modal.classList.add("active");
+}
+
+function closeModal() {
+  modal.classList.remove("active");
+}
+
+/* ESC KEY */
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeModal();
+});
+</script>
+
+</body>
+</html>
