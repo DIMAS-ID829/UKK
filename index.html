@@ -2,9 +2,8 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Home | UKK DKV</title>
+  <title>Home | UKK DIMAS KURNIA SANDI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     * {
       box-sizing: border-box;
@@ -12,7 +11,6 @@
       padding: 0;
       font-family: Arial, Helvetica, sans-serif;
     }
-
     body {
       background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 50%, #1E90FF 100%);
       background-size: 400% 400%;
@@ -20,13 +18,11 @@
       position: relative;
       overflow-x: hidden;
     }
-
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     /* Animated clouds */
     body::before,
     body::after {
@@ -36,7 +32,6 @@
       border-radius: 100px;
       z-index: 0;
     }
-
     body::before {
       width: 300px;
       height: 80px;
@@ -44,7 +39,6 @@
       left: -150px;
       animation: floatCloud1 20s linear infinite;
     }
-
     body::after {
       width: 250px;
       height: 70px;
@@ -52,17 +46,14 @@
       left: -150px;
       animation: floatCloud2 25s linear infinite;
     }
-
     @keyframes floatCloud1 {
       0% { left: -150px; }
       100% { left: 110%; }
     }
-
     @keyframes floatCloud2 {
       0% { left: -150px; }
       100% { left: 110%; }
     }
-
     .parent {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -73,7 +64,6 @@
       position: relative;
       z-index: 1;
     }
-
     /* === GRID POSITION === */
     .div1 { grid-row: span 3; }
     .div2 { grid-column: 1; grid-row: 4; }
@@ -83,7 +73,6 @@
     .div6 { grid-column: 5; grid-row: 4; }
     .div7 { grid-column: 2 / span 4; grid-row: 1 / span 3; }
     .div8 { grid-column: 1 / span 5; grid-row: 5; }
-
     /* === PROFILE === */
     .profile {
       background: #ffffff;
@@ -92,7 +81,6 @@
       text-align: center;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-
     .profile img {
       width: 130px;
       height: 130px;
@@ -101,18 +89,15 @@
       margin-bottom: 12px;
       border: 3px solid #4A90E2;
     }
-
     .profile h3 {
       font-size: 18px;
       margin-bottom: 4px;
       color: #1E90FF;
     }
-
     .profile p {
       font-size: 14px;
       color: #555;
     }
-
     /* === HERO === */
     .hero {
       background: linear-gradient(135deg, #5DADE2 0%, #3498DB 100%);
@@ -123,7 +108,6 @@
       justify-content: center;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-
     .hero h1 {
       font-size: 34px;
       font-weight: bold;
@@ -131,18 +115,15 @@
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
-
     .hero h2 {
       font-size: 26px;
       margin-bottom: 10px;
       color: #fff;
     }
-
     .hero p {
       font-size: 16px;
       color: #f0f8ff;
     }
-
     /* === MENU === */
     .menu {
       background: linear-gradient(135deg, #5DADE2 0%, #3498DB 100%);
@@ -156,25 +137,24 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px 10px; /* tambahan padding agar lebih lega */
     }
-
     .menu:hover {
       background: linear-gradient(135deg, #3498DB 0%, #2874A6 100%);
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
-
-    .menu span.icon {
-      font-size: 34px;
-      margin-bottom: 6px;
+    .menu .icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 12px;
+      object-fit: contain;
     }
-
     .menu span.text {
       font-size: 14px;
       font-weight: bold;
       text-align: center;
     }
-
     /* === FOOTER === */
     .footer {
       background: #1A5490;
@@ -186,14 +166,12 @@
       font-size: 14px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-
     /* === RESPONSIVE === */
     @media (max-width: 1200px) {
       .hero h1 { font-size: 28px; }
       .hero h2 { font-size: 22px; }
       .hero p { font-size: 14px; }
     }
-
     @media (max-width: 900px) {
       .parent {
         grid-template-columns: repeat(2, 1fr);
@@ -202,144 +180,125 @@
         gap: 8px;
         padding: 12px;
       }
-
       .div1 {
         grid-column: span 2;
         grid-row: auto;
       }
-
       .div7 {
         grid-column: span 2;
         grid-row: auto;
       }
-
       .div2, .div3, .div4, .div5, .div6 {
         grid-column: span 1;
         grid-row: auto;
       }
-
       .div8 {
         grid-column: span 2;
         grid-row: auto;
       }
-
       .hero {
         padding: 24px;
       }
-
       .hero h1 { font-size: 24px; }
       .hero h2 { font-size: 20px; }
       .hero p { font-size: 14px; }
-
-      .menu span.icon { font-size: 28px; }
+      .menu .icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+      }
       .menu span.text { font-size: 12px; }
     }
-
     @media (max-width: 600px) {
       .parent {
         grid-template-columns: 1fr;
         gap: 10px;
         padding: 10px;
       }
-
       .div1, .div7, .div2, .div3, .div4, .div5, .div6, .div8 {
         grid-column: span 1;
         grid-row: auto;
       }
-
       .profile {
         padding: 16px;
       }
-
       .profile img {
         width: 100px;
         height: 100px;
       }
-
       .profile h3 { font-size: 16px; }
       .profile p { font-size: 13px; }
-
       .hero {
         padding: 20px;
       }
-
       .hero h1 { font-size: 20px; }
       .hero h2 { font-size: 18px; }
       .hero p { font-size: 13px; }
-
       .menu {
-        padding: 16px;
-        min-height: 100px;
+        padding: 20px;
+        min-height: 120px;
       }
-
-      .menu span.icon { font-size: 32px; }
+      .menu .icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 12px;
+      }
       .menu span.text { font-size: 13px; }
-
       .footer {
         padding: 16px;
         font-size: 12px;
         text-align: center;
       }
     }
-
     @media (max-width: 400px) {
       .hero h1 { font-size: 18px; }
       .hero h2 { font-size: 16px; }
-      .menu span.icon { font-size: 28px; }
+      .menu .icon {
+        width: 48px;
+        height: 48px;
+      }
     }
   </style>
 </head>
-
 <body>
-
 <div class="parent">
-
   <!-- PROFIL -->
   <div class="div1 profile">
     <img src="https://via.placeholder.com/300" alt="Foto Peserta">
     <h3>Nama Peserta</h3>
     <p>Desain Komunikasi Visual</p>
   </div>
-
   <!-- HERO -->
   <div class="div7 hero">
     <h1>UJI KOMPETENSI KEAHLIAN</h1>
     <h2>DESAIN KOMUNIKASI VISUAL</h2>
-    <p>Tahun Pelajaran 2024 / 2025</p>
+    <p>Tahun Pelajaran 2025 / 2026</p>
   </div>
-
   <!-- MENU -->
   <a href="tentang.html" class="div2 menu">
-    <span class="icon">👤</span>
+    <img src="icon/tentang-peserta.png" alt="Tentang Peserta" class="icon">
     <span class="text">Tentang Peserta</span>
   </a>
-
   <a href="pendahuluan.html" class="div3 menu">
-    <span class="icon">✏️</span>
+    <img src="icon/pendahuluan.png" alt="Pendahuluan" class="icon">
     <span class="text">Pendahuluan</span>
   </a>
-
   <a href="tentang project.html" class="div4 menu">
-    <span class="icon">📄</span>
+    <img src="icon/tentang-proyek.png" alt="Tentang Proyek" class="icon">
     <span class="text">Tentang Proyek</span>
   </a>
-
   <a href="project.html" class="div5 menu">
-    <span class="icon">▶️</span>
+    <img src="icon/proyek.png" alt="Proyek" class="icon">
     <span class="text">Proyek</span>
   </a>
-
   <a href="lampiran.html" class="div6 menu">
-    <span class="icon">📎</span>
+    <img src="icon/lampiran.png" alt="Lampiran" class="icon">
     <span class="text">Lampiran</span>
   </a>
-
   <!-- FOOTER -->
   <div class="div8 footer">
     Website UKK SMK Miftahul Ulum Tanjungarum
   </div>
-
 </div>
-
 </body>
 </html>
